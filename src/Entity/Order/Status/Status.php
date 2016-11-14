@@ -71,4 +71,20 @@ class Status extends EntityAbstract implements EntityInterface
 
         return $this;
     }
+
+    public function toArray()
+    {
+        $array = parent::toArray();
+        $s =  strtolower($array['status']);
+
+        $r = [
+           'status'=> $array['status'],
+        ];
+
+        if (array_key_exists($s, $array)) {
+           $r[$s] = $array[$s];
+        }
+
+        return $r;
+    }
 }
